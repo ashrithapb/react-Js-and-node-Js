@@ -1,0 +1,34 @@
+const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const fetchCourse = require("./fetch/fetch-course");
+const fetchTest = require("./fetch/fetch-test");
+const fetchCourseById = require("./fetch/fetch-coursebyid");
+const fetchTestById = require("./fetch/fetch-testbyid");
+const fetchCourseByName = require("./fetch/fetch-coursebyname");
+const fetchTestByName = require("./fetch/fetch-testbyname");
+const insertCourse = require("./insert/insert-course");
+const insertTest = require("./insert/insert-test");
+const updateCourse = require("./update/update-course");
+const updateTest = require("./update/update-test");
+const deleteCourse = require("./delete/delete-course");
+const deleteTest = require("./delete/delete-test");
+var app = express();
+app.use(cors());
+app.use(bodyParser.json());
+app.use("/fetch-course", fetchCourse);
+app.use("/fetch-coursebyid", fetchCourseById);
+app.use("/fetch-coursebyname", fetchCourseByName);
+app.use("/insert-course", insertCourse);
+app.use("/update-course", updateCourse);
+app.use("/delete-course", deleteCourse);
+
+app.use("/fetch-test", fetchTest);
+app.use("/fetch-testbyid", fetchTestById);
+app.use("/fetch-testbyname", fetchTestByName);
+app.use("/insert-test", insertTest);
+app.use("/update-test", updateTest);
+app.use("/delete-test", deleteTest);
+
+app.listen(8081);
+console.log("server listening on 8081");
